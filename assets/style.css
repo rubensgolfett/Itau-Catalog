@@ -1,0 +1,64 @@
+
+:root {
+     --itau-orange: #FF6B00;
+     --itau-blue-dark: #002663;
+     --itau-blue: #0057B7;
+     --light-gray: #F4F4F4;
+     --text-dark: #333333;
+     --white: #FFFFFF;
+}
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+     background-color: var(--light-gray);
+     color: var(--text-dark);
+     font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+     background-color: var(--itau-blue-dark);
+     margin-top: 0px;
+}
+
+.navbar-brand {
+     color: var(--white) !important;
+     font-weight: bold;
+     font-size: 1.2rem;
+}
+
+.navbar-collapse {
+     margin-top: 15px;
+     border-radius: 20px;
+}
+.radius {
+     border-radius: 20px;
+}
+
+.card {
+     background-color: var(--white);
+     border: 1px solid #ddd;
+     border-radius: 8px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+     background-color: var(--itau-orange);
+     border: none;
+}
+
+.btn-primary:hover, .orange {
+     background-color: #e65a00;
+}
+
+.fixed-start {
+     position: relative;
+}
+
+a {
+     color: var(--itau-blue);
+}
