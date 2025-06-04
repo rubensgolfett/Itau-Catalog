@@ -6,12 +6,13 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Product Financial</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
      <h1 class="mb-4 text-center">Product Financial</h1>
 
-     <form method="GET" class="mb-4 container">
+     <form method="GET" class="mb-4 container" action="<?= $_SERVER['PHP_SELF']?>">
           <div class="row g-2">
                <div class="col-md-6 col-12">
                     <input type="text" name="search" class="form-control" placeholder="Search by name...">
@@ -21,15 +22,14 @@
                     <?php
                          $options = ['Account', 'Cart', 'Credit', 'Investment'];
                          foreach ($options as $option) {
-                         $selected = $filters['catalog'] === $option ? 'selected' : '';
-                         echo "<option value=\"$option\" $selected>$option</option>";
+                              $selected = $filters['catalog'] === $option ? 'selected' : '';
+                              echo "<option value=\"$option\" $selected>$option</option>";
                          }
                     ?>
                     </select>
                </div>
                <div class="col-md-2 col-4">
-                    <br>
-                    <button class="btn btn-primary w-100">Filter</button>
+                    <button class="btn btn-outline-primary blue w-100">Filter</button>
                </div>
           </div>
      </form>
@@ -90,6 +90,7 @@
                <?php endforeach; ?>
           <?php endif; ?>
      </div>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php include "../includes/footer.php" ?>
