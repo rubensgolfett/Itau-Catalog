@@ -11,5 +11,6 @@
           } catch (PDOException $e) {
           die("Erro na conexão: " . $e->getMessage());
      }
-     echo "Conexão bem-sucedida ao banco de dados!<br>";
+
+     
 ?>
