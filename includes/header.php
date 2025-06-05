@@ -10,22 +10,17 @@
 <body>
      <header class="d-flex justify-content-between align-items-center p-3 mb-4 orange">
           <h1>Catalog</h1>
-          <nav class="navbar navbar-expand-md navbar-light orange">
+          <nav class="navbar navbar-expand-sm navbar-light orange">
                <div class="container-fluid orange fixed-start">
-                    <button class="btn navbar-toggler  blue" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="btn navbar-toggler-icon orange"></span>
-                    </button>
-                    <div class="collapse navbar-collapse orange" id="navbarNav">
-                         <ul class="navbar-nav bg-white ps-2 radius">
+                    <div class="orange">
+                         <ul class="navbar-nav bg-white px-4 radius">
                               <li class="nav-item">
-                                   <a class="nav-link active" aria-current="page" href="../public/index.php active">Home</a>
+                                   <a class="nav-link active" aria-current="page" href="../public/index.php">Home</a>
                               </li>
                               <li class="nav-item">
                                    <a class="nav-link" href="../public/product.php">Products</a>
                               </li>
-                              <li class="nav-item">
-                                   <a class="nav-link" href="../admin/login.php">Login</a>
-                              </li>
+                         </ul>
                     </div>
                </div>
           </nav>

@@ -5,29 +5,27 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Product Financial</title>
+     <title>Market Product</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
      <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-     <h1 class="mb-4 text-center">Product Financial</h1>
+     <h1 class="mb-4 text-center">Market Product</h1>
 
      <form method="GET" class="mb-4 container" action="<?= $_SERVER['PHP_SELF']?>">
           <div class="row g-2">
                <div class="col-md-6 col-12">
                     <input type="text" name="search" class="form-control" placeholder="Search by name...">
                </div>
-               <div class="col-md-4 col-8">
-                    <select name="catalog" class="form-select">
-                    <?php
-                         $options = ['Account', 'Cart', 'Credit', 'Investment'];
-                         foreach ($options as $option) {
-                              $selected = $filters['catalog'] === $option ? 'selected' : '';
-                              echo "<option value=\"$option\" $selected>$option</option>";
+               <!-- <div class="col-md-4 col-8">
+                         <?php 
+                         // Assuming you have a function to fetch catalogs from the database
+                         function getCatalogs(PDO $pdo): array {
+                              $stmt = $pdo->query("SELECT id, name FROM products");
+                              return $stmt->fetchAll(PDO::FETCH_ASSOC);
                          }
-                    ?>
-                    </select>
-               </div>
+                         ?>
+               </div> -->
                <div class="col-md-2 col-4">
                     <button class="btn btn-outline-primary blue w-100">Filter</button>
                </div>
@@ -36,14 +34,15 @@
 
      <div class="row">
 <?php 
-// Assuming $produtos is an array of products fetched from the database// Conexão com o banco (ajuste os dados conforme necessário)
+     // Assuming $produtos is an array of products fetched from the database
+     // Conection with db (ajuste os dados conforme necessário)
      $pdo = new PDO("mysql:host=localhost;dbname=catalog;charset=utf8", "root", '');
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     // Testar se a tabela existe
+     // Test if exists table products
      
-     // Função para buscar produtos ativos com filtros opcionais
+     // Func for Search product active with filters opctional
      function getActiveProducts(PDO $pdo, array $filters = []): array {
-          $sql = "SELECT * FROM products WHERE status = 1";
+          $sql = "SELECT * FROM products WHERE price >= 1";
           $params = [];
 
           if (!empty($filters['search'])) {
@@ -65,13 +64,13 @@
           return $stmt->fetchAll();
      }
 
-     // Captura filtros
+     // Capture Filters
      $filters = [
      'search' => $_GET['search'] ?? '',
      'catalog' => $_GET['catalog'] ?? ''
      ];
 
-     // Busca os produtos
+     // Search products
      $produtos = getActiveProducts($pdo, $filters);
 ?>
           <?php if (empty($produtos)): ?>
@@ -82,7 +81,7 @@
                          <div class="card h-100 shadow-sm">
                          <div class="card-body">
                               <h5 class="card-title"><?= htmlspecialchars($produto['name']) ?></h5>
-                              <p class="card-text"><?= htmlspecialchars($produto['description']) ?></p>
+                              <p class="card-text"><?= htmlspecialchars($produto['descr']) ?></p>
                               <a href="produto.php?id=<?= $produto['id'] ?>" class="btn btn-outline-primary">Details</a>
                          </div>
                          </div>
